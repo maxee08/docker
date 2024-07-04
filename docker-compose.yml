@@ -2,14 +2,18 @@ version: '3'
 services:
   api:
     image: docker/getting-started
+    container_name: api
+    restart: always
+    networks:
+      - networkserver
     ports:
       - 8080:80
   nginx:
-    restart: always
     image: nginx:latest
     container_name: nginx
-    # networks:
-    #   - networkserver
+    restart: always
+    networks:
+      - networkserver
     ports:
       - "80:80" # Puerto externo para acceder al proxy
     volumes:
@@ -18,7 +22,7 @@ services:
       # - "./nginx/ssl:/etc/nginx/ssl"
 
 # Declare networks
-# networks:
-#   networkserver:
-#     name: current_nodeserver
-#     external: true
+networks:
+  networkserver:
+    name: current_networkserver
+    # external: true
