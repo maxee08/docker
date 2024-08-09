@@ -1,6 +1,6 @@
 services:
   api:
-    image: 590183908054.dkr.ecr.us-east-2.amazonaws.com/simple-api:latest
+    image: ${PROJECT_REPO}
     container_name: api
     restart: always
     networks:
