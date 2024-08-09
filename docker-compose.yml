@@ -19,6 +19,25 @@ services:
       - "./nginx/default.conf:/etc/nginx/conf.d/default.conf"
       - "./nginx/nginx.conf:/etc/nginx/nginx.conf"
       # - "./nginx/ssl:/etc/nginx/ssl"
+  redis:
+    container_name: redis
+    image: bitnami/redis:latest
+    restart: always
+    sysctls:
+      net.core.somaxconn: 4096
+    ulimits:
+      nproc: 65535
+      nofile:
+        soft: 20000
+        hard: 40000
+    volumes:
+      - ./redis/data:/bitnami/redis/data
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+    ports:
+      - 6379:6379
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
 
 # Declare networks
 networks:
