@@ -7,6 +7,10 @@ services:
       - networkserver
     ports:
       - 3000:3000
+    environment:
+      PORT: ${PORT}
+      REDIS_HOST: ${REDIS_HOST}
+      REDIS_PORT: ${REDIS_PORT}
   nginx:
     image: nginx:latest
     container_name: nginx
