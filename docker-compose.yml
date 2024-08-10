@@ -6,7 +6,7 @@ services:
     networks:
       - networkserver
     ports:
-      - 3000:3000
+      - ${PORT}:${PORT}
     environment:
       PORT: ${PORT}
       REDIS_HOST: ${REDIS_HOST}
